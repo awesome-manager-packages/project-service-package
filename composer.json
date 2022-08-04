@@ -1,0 +1,26 @@
+{
+    "name": "awesome-manager-packages/project-service-package",
+    "description": "Manager project service package",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Vadim Lebedev",
+            "email": "shadar147@gmail.com"
+        }
+    ],
+    "require": {
+        "my-awesome-packages/connector": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:my-awesome-packages/connector.git"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AwesomeManager\\ProjectService\\Client\\": ["src/"]
+        }
+    }
+}
