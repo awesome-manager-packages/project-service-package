@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "my-awesome-packages/connector": "^1.0"
+        "my-awesome-packages/connector": "^1.0",
+        "illuminate/support": "^9.0"
     },
     "repositories": [
         {
