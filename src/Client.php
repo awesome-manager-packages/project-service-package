@@ -4,6 +4,7 @@ namespace AwesomeManager\ProjectService\Client;
 
 use Illuminate\Support\Arr;
 use Awesome\Connector\Request;
+use Awesome\Connector\Contracts\Method;
 use Awesome\Connector\Contracts\Request as RequestContract;
 use AwesomeManager\ProjectService\Client\Contracts\Client as ClientContract;
 
@@ -12,6 +13,14 @@ class Client implements ClientContract
     public function projects(): RequestContract
     {
         return $this->makeRequest()->url('projects/');
+    }
+
+    public function createProject(array $data): RequestContract
+    {
+        return $this->makeRequest()
+            ->method(Method::POST)
+            ->url('projects/')
+            ->body($data);
     }
 
     public function statuses(array $filter = []): RequestContract
@@ -30,12 +39,12 @@ class Client implements ClientContract
             ));
     }
 
-    public function customers(array $filter = [], bool $withAvailableCustomers = false): RequestContract
+    public function customers(array $filter = [], bool $withAvailableGroups = false): RequestContract
     {
         return $this->makeRequest()
             ->url('customers/')
             ->query(
-                array_merge(['with_available' => $withAvailableCustomers], Arr::only($filter, ['ids'])
+                array_merge(['with_available' => $withAvailableGroups], Arr::only($filter, ['ids'])
             ));
     }
 
