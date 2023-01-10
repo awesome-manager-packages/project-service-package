@@ -20,7 +20,7 @@ class Client implements ClientContract
         return $this->makeRequest()
             ->method(Method::POST)
             ->url('projects/')
-            ->body($data);
+            ->formData($data);
     }
 
     public function statuses(array $filter = []): RequestContract
