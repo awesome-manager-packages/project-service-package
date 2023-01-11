@@ -6,7 +6,7 @@ use Awesome\Connector\Contracts\Request;
 
 interface Client
 {
-    public function projects(): Request;
+    public function projects(array $ids = [], bool $activeOnly = true): Request;
 
     public function createProject(array $data): Request;
 
