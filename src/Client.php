@@ -10,9 +10,14 @@ use AwesomeManager\ProjectService\Client\Contracts\Client as ClientContract;
 
 class Client implements ClientContract
 {
-    public function projects(): RequestContract
+    public function projects(array $ids = [], bool $activeOnly = true): RequestContract
     {
-        return $this->makeRequest()->url('projects/');
+        return $this->makeRequest()
+            ->url('projects/')
+            ->query([
+                'ids' => $ids,
+                'active_only' => $activeOnly
+            ]);
     }
 
     public function createProject(array $data): RequestContract
